@@ -17,3 +17,14 @@ float rad2deg(float rad)
 {
 	return (rad * 180) / 3.14;
 }
+
+float 
+linearHalf(float x)
+{
+	return 0.5f;
+}
+
+float growfast(float x)
+{
+	return x*x*x*x;
+}
