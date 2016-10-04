@@ -8,7 +8,7 @@ class Transform
 
 public:
 	Transform();
-	Transform(float x, float y );
+	Transform(float x, float y, float w, float h, float a);
 
 	vec2 position;
 	vec2 scale;

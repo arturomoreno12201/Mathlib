@@ -8,10 +8,14 @@ Transform::Transform() : facing(0), position({ 0,0 }), scale({28,8})
 	
 }
 
-Transform::Transform(float x, float y) : Transform()
+Transform::Transform(float x, float y,float w, float h, float a) : Transform()
 {
 	position.x = x;
 	position.y = y;
+	scale.x = w;
+	scale.y = h;
+
+	facing = a;
 }
 
 vec2 Transform::getDirection()

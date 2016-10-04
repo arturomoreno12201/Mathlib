@@ -93,6 +93,7 @@ float quadbraz(float start, float mid, float end, float alpha)
 		lerp(start, mid, alpha),
 		lerp(start, end, alpha), alpha
 		);
+	return alpha;
 }
 
 float hermiteSpline(float start, float s_tan,float end, float e_tan, float alpha)

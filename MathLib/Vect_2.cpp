@@ -119,10 +119,9 @@ vec2 lerp(const vec2 & start, const vec2 & end, float alpha)
 
 vec2 quadbraz(const vec2 & start, const vec2 & mid, const vec2 & end, float alpha)
 {
-	lerp(
-		lerp(start, mid, alpha),
-		lerp(start, end, alpha), alpha
-	);
+	vec2 midl = lerp(start, mid, alpha), midl2 = lerp(start, end, alpha);
+	return lerp(midl, midl2, alpha);
+	
 }
 
 vec2 hermiteSpline(const vec2 & start, const vec2 & s_tan, const vec2 & end, const vec2 & e_tan, float alpha)
@@ -139,11 +138,16 @@ vec2 hermiteSpline(const vec2 & start, const vec2 & s_tan, const vec2 & end, con
 		h01 * end + h11 * e_tan;
 }
 
+vec2 cardinalSpline(const vec2 & start, const vec2 & mid, const vec2 & end, float tightness, float alpha)
+{
+	return vec2();
+}
+
 vec2 cardinalSpline(const vec2 & start, const vec2 & mid, const vec2 & end, const vec2 & tightness, float alpha)
 {
 	vec2 
-	 s_tan = (mid - start)* tightness,
-		e_tan = (start - mid)* tightness;
+	 s_tan = (mid - start) +tightness,
+		e_tan = (start - mid) +tightness;
 	return  hermiteSpline(start, s_tan, end, e_tan, alpha);
 }
 
