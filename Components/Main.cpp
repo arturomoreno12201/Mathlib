@@ -35,20 +35,20 @@ void main()
 		fall.facing += getDeltaTime();
 		fall.debugDraw();
 		fall.update(trans);
-
-		for (int i = 0; i < 100; ++i)
+		float step = 50;
+		for (int i = 0; i < step; ++i)
 		{
 
-			float	x1 = i / 100.f;
-			float y1 = linearHalf(x1);
+			float x1 = i * step;
+			float y1 = (i+1)*step;
 
-			float	x2 = growfast(x1);
-			float y2 = growfast(x2);
+			float x2 = parabshift(x1);
+			float y2 = parabshift(x2);
 
-			x1 *= 800;
-			x2 *= 800;
-			y1 *= 800;
-			y2 *= 800;
+			x1 *= 50;
+			x2 *= 50;
+			y1 *= 50;
+			y2 *= 50;
 
 			drawLine(x1,y1,x2,y2);
 		}
