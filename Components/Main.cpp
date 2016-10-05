@@ -1,60 +1,52 @@
+#include "Rigidbody.h"
+#include "Transform.h"
 #include "sfwdraw.h"
 #include "Vect_2.h"
-#include "Transform.h"
-#include "fallower.h"
 #include "FLOPS.h"
-
+#include "star.h"
+#include "starControler.h"
 using namespace sfw;
 
 void main()
 {
-	initContext();
-	Transform trans(400, 300);
-	Fallower fall (300,200);
+	float SCREEN_WIDTH = 400, SCREEN_HEIGHT = 400;
+	sfw::initContext(SCREEN_WIDTH, SCREEN_HEIGHT);
+	float steps = 100;
 
-	int j = int(4);
-	int k(4);
-	int l = { 4 };
-	int n{4};
-	//trans.position = vec2{ 400,300 };
-	trans.facing = 0;
-	trans.scale = vec2{ 28,8 };
-	fall.facing = 0;
-	fall.scale = vec2{28,8};
+	vec2 start = { 200, 300 },
+		end = { 900, 800 },
+		mid = { 0, 1100 };
 
-	
+	Transform playerTransform(200, 200);
+	playerTransform.scale = { 5,5 };
 
+	Rigidbody playerRigidbody;
 
-	while (stepContext())
+	StarControler  playerCtrl;
+	Star playerLoco;
+
+	while (sfw::stepContext())
 	{
-		
-		trans.facing += getDeltaTime();
-		trans.debugDraw();
-		trans.update();
+		float deltaTime = sfw::getDeltaTime();
 
-		fall.facing += getDeltaTime();
-		fall.debugDraw();
-		fall.update(trans);
-		float step = 50;
-		for (int i = 0; i < step; ++i)
-		{
+		// Wrap the player's position within the screen bounds
+		if (playerTransform.position.x > SCREEN_WIDTH)
+			playerTransform.position.x = 0.0f;
+		else if (playerTransform.position.x < 0.0f)
+			playerTransform = SCREEN_WIDTH;
 
-			float x1 = i * step;
-			float y1 = (i+1)*step;
+		if (playerTransform.position.y > SCREEN_HEIGHT)
+			playerTransform.position.y = 0.0f;
+		else if (playerTransform.position.y < 0.0f)
+			playerTransform.position.y = SCREEN_HEIGHT;
 
-			float x2 = parabshift(x1);
-			float y2 = parabshift(x2);
+		// Apply rigidbody forces
+		playerCtrl.update(playerLoco);
+		playerLoco.update(playerTransform, playerRigidbody);
+		playerRigidbody.integrate(playerTransform, deltaTime);
 
-			x1 *= 50;
-			x2 *= 50;
-			y1 *= 50;
-			y2 *= 50;
-
-			drawLine(x1,y1,x2,y2);
-		}
-
+		// Draw the player
+		playerTransform.debugDraw();
 	}
-
-
-	termContext();
+	sfw::termContext();
 }

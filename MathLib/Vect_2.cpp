@@ -119,8 +119,10 @@ vec2 lerp(const vec2 & start, const vec2 & end, float alpha)
 
 vec2 quadbraz(const vec2 & start, const vec2 & mid, const vec2 & end, float alpha)
 {
-	vec2 midl = lerp(start, mid, alpha), midl2 = lerp(start, end, alpha);
-	return lerp(midl, midl2, alpha);
+	vec2 retval;
+	retval.x = lerp(start.x, end.x, alpha);
+	retval.y = lerp(start.y, end.y, alpha);
+	return retval;
 	
 }
 
@@ -153,5 +155,8 @@ vec2 cardinalSpline(const vec2 & start, const vec2 & mid, const vec2 & end, cons
 
 vec2 catRomSpline(const vec2 & start, const vec2 & mid, const vec2 & end, float alpha)
 {
-	return cardinalSpline(start, mid, end, 0.5f, alpha);
+	vec2 retval;
+	retval.x = catRomSpline(start.x, mid.x, end.x, alpha);
+	retval.y = catRomSpline(start.y, mid.y, end.y, alpha);
+	return retval;
 }

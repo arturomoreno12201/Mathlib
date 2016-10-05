@@ -2,22 +2,17 @@
 #include "Rigidbody.h"
 class Star
 {
-	Star();
+	
+	float vertThrust;	
+	float horzThrust;	
 
-	float thrust;
-	float maxThrust;
-	float ThrustSpeed;
-
-	float turn;
-	float maxTurn;
-	float turnSpeed;
-
-	float speed;
+	float speed;		
+	float maxSpeed;		
 
 public:
-	void doThrust();
-	void doTern();
+	Star();
+	void doThrust(float value);
+	void doTurn(float value);
 
-
-	void update(Rigidbody &rigidbody, float deltaTime);
+	void update(const Transform &trans, Rigidbody &rigidbody);
 };
