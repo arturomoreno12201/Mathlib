@@ -23,14 +23,28 @@ void Star::doTurn(float value)
 	horzThrust = value;
 }
 
+void Star::doStop(float value)
+{
+
+	stopAction += value;
+
+}
+
 void Star::update(const Transform &trans, Rigidbody & rigidbody)
 {
-	rigidbody.addForce(trans.getDirection()* speed * vertThrust);
+	rigidbody.addForce(trans.getUP()* speed * vertThrust);
 
 	trans.getDirection()*speed*vertThrust;
 
 	rigidbody.addTorque(horzThrust *speed* vertThrust);
 	vertThrust = 0;
+
+	float currentSpeed = magnitude(rigidbody.velocity);
+
+	-normal(-rigidbody.velocity);
+
+	horzThrust = vertThrust = 0;
+
 /*
 	rigidbody.acceleration.x = horzThrust * speed;
 	rigidbody.acceleration.y = vertThrust * speed;
@@ -49,3 +63,5 @@ void Star::update(const Transform &trans, Rigidbody & rigidbody)
 	vertThrust = 0.0f;
 	horzThrust = 0.0f;*/
 }
+
+

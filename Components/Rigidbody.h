@@ -10,7 +10,7 @@ public:
 	Rigidbody();
 	vec2 force;
 	vec2 impulse;
-	float mass;
+	float mass, drag,angularDrag;
 	vec2 velocity;				// represents the change in position
 	float angularVelocity;		// represents the change in rotation
 	float torque;
@@ -24,4 +24,6 @@ public:
 	void addTorque(float a_torque);
 
 	void integrate(Transform &trans, float deltaTime);	// performs integration :)
+
+	void debugDraw(const Transform&trans);
 };
