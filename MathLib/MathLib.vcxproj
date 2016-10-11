@@ -118,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FLOPS.cpp" />
+    <ClCompile Include="mat2.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="vec3.cpp" />
     <ClCompile Include="Vect_2.cpp" />
