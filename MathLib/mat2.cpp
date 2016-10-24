@@ -1,100 +1,107 @@
 #include "mat2.h"
-#include"Vect_2.h"
 #include "FLOPS.h"
-#include <iostream>
 
-using namespace std;
-
-
-mat2::mat2()
-{for (int row = 0; row < 2; ++row)
-	{
-		for (int col = 0; col < 2; ++col) mm[col][row] = 0;
-	}
-}
-
-float mat2::operator[](unsigned idx) const
+bool operator==(const mat2 & A, const mat2 & B)
 {
-	return m[idx];
+	return A[0] == B[0] && A[1] == B[1];
 }
 
-float & mat2::operator[](unsigned idx)
+bool operator!=(const mat2 & A, const mat2 & B)
 {
-	return mm[idx][idx];
+	return !(A == B);
 }
 
-bool operator==(const mat2 & a, const mat2 & b)
+mat2 operator+(const mat2 & A, const mat2 & B)
 {
-	return fequals (a.m[0], b.m[0])&&
-			fequals(a.m[1], b.m[1]) && 
-			fequals(a.m[2], b.m[2]) && 
-			fequals(a.m[3], b.m[3]);
+	mat2 retval;
+	retval[0] = A[0] + B[0];
+	retval[1] = A[1] + B[1];
+	return retval;
 }
 
-mat2 transpose()
+mat2 operator-(const mat2 & A, const mat2 & B)
 {
-	return mat2 {1,0,0,1};
+	mat2 retval;
+	retval[0] = A[0] - B[0];
+	retval[1] = A[1] - B[1];
+	return retval;
 }
 
-
-
-mat2 transpose(const mat2 & a)
+mat2 operator*(const mat2 & A, float s)
 {
-	mat2 retval = a;
-
-	retval.mm[1][0] = a.mm[0][1];
-	retval.mm[0][1] = a.mm[1][0];
-
-	return a;
+	mat2 retval;
+	retval[0] = A[0] * s;
+	retval[1] = A[1] * s;
+	return retval;
 }
 
-mat2 operator+(const mat2 & a, const mat2 & b)
+mat2 operator*(float s, const mat2 & A)
 {
-	mat2 returnValue;
-
-	for (int i = 0; i < 4; ++i)
-	{
-		returnValue[i] = a[i] + b[i];
-	}
-
-	return returnValue;
+	return A * s;
 }
 
-mat2 operator-(const mat2 & a, const mat2 & b)
+mat2 operator-(const mat2 & A)
 {
-
-	mat2 returnValue;
-
-	for (int i = 0; i < 4; ++i)
-	{
-		returnValue[i] = a[i] - b[i];
-	}
-
-	return returnValue;
+	return A*-1;
 }
 
-mat2 operator*(const mat2 &a, const mat2 &b)
+mat2 transpose(const mat2 &A)
 {
-	mat2 temp;
+	mat2 retval = A;
 
-	for (int col = 0; col < 2; ++col)
-	{
-		for (int row = 0; row < 2; ++row)
-		{
-			for (int inner = 0; inner < 2; ++inner)
-				temp.mm[col][row] += a.mm[col][inner] * b.mm[inner][row];
-		}
-	}
+	retval.mm[1][0] = A.mm[0][1];
+	retval.mm[0][1] = A.mm[1][0];
 
-	return temp;
+	return A;
 }
 
-float determinat(const mat2 & a)
+
+mat2 operator*(const mat2 & A, const mat2 & B)
+{
+	
+	mat2 At = transpose(A);
+	mat2 retval;
+
+	for (int i = 0; i < 2; ++i)
+		for (int j = 0; j < 2; ++j)
+			retval[j][i] = dot(At[i], B[j]);
+
+	return retval;
+}
+
+vec2 operator*(const mat2 & A, const vec2 & V)
+{
+	mat2 At = transpose(A);
+	vec2 retval;
+
+	retval[0] = dot(At[0], V);
+	retval[1] = dot(At[1], V);
+
+	return retval;
+}
+
+mat2 mat2Identity() { return mat2{ 1,0,0,1 }; }
+
+
+
+
+
+vec2 mat2::operator[](unsigned idx) const
+{
+	return c[idx];
+}
+
+vec2 & mat2::operator[](unsigned idx)
+{
+	return c[idx];
+}
+
+float determinant(const mat2 & A)
 {
 	return 0.0f;
 }
 
-mat2 invers(const mat2 & a)
+mat2 inverse(const mat2 & A)
 {
 	return mat2();
 }

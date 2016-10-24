@@ -1,34 +1,32 @@
 #pragma once
-#include"Vect_2.h"
-#include "FLOPS.h"
+#include "Vect_2.h"
+
+
 
 union mat2
 {
-	mat2();
+	float m[4];      // single dimensional array
+	float mm[2][2];  // multidimensional array
+	vec2  c[2];      // column vectors
 
-	float m[4];
-	float mm[2][2];
-	vec2 c[2];
-
-	float operator[](unsigned idx)const;
-	float &operator[](unsigned idx);
+	vec2  operator[](unsigned idx) const;
+	vec2 &operator[](unsigned idx);
 };
 
-bool operator==(const mat2 &a,const mat2 &b );
-mat2 transpose();
-mat2 transpose(const mat2 &a);
+mat2 mat2Identity();
+mat2 transpose(const mat2 &A);
 
-mat2 operator +(const mat2 &a, const mat2 &b);
-mat2 operator -(const mat2 &a, const mat2 &b);
+bool operator==(const mat2 &A, const mat2 &B);
+bool operator!=(const mat2 &A, const mat2 &B);
 
-//mat2 operator*(const mat2 &a, float s);
-//mat2 operator*(float s, const mat2 &a);
-//mat2 operator*(const mat2 &a, const mat2 &b);
-//mat2 operator*(const mat2 &a, const mat2 &v);
+mat2 operator+(const mat2 &A, const mat2 &B);
+mat2 operator-(const mat2 &A, const mat2 &B);
+mat2 operator-(const mat2 &A);
 
-mat2 operator*(const mat2 &a, const mat2 &b);
+mat2 operator*(const mat2 &A, float s);
+mat2 operator*(float s, const mat2 &A);
+mat2 operator*(const mat2 &A, const mat2 &B);
+vec2 operator*(const mat2 &A, const vec2 &V);
 
-
-float determinat(const mat2 &a);
-mat2 invers(const mat2 &a);
-
+float determinant(const mat2 &A);
+mat2 inverse(const mat2 &A);

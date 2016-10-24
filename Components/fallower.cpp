@@ -40,20 +40,20 @@ void Fallower::debugDraw()
 void Fallower::update(const Transform & trans)
 {
 	//fallow up&down
-	if (trans.position.y > position.y-- || position.y < trans.position.y)
+	if (trans.m_position.y > position.y-- || position.y < trans.m_position.y)
 	{
 		position.y += getDeltaTime() * 400;
 	}
-	if (trans.position.y < position.y++ || position.y > trans.position.y)
+	if (trans.m_position.y < position.y++ || position.y > trans.m_position.y)
 	{
 		position.y -= getDeltaTime() * 400;
 	}
 	//FAllOW left&right
-	if (trans.position.x > position.x-- || position.x< trans.position.x)
+	if (trans.m_position.x > position.x-- || position.x< trans.m_position.x)
 	{
 		position.x += getDeltaTime() * 400;
 	}
-	if (trans.position.x < position.x++ || position.x > trans.position.x)
+	if (trans.m_position.x < position.x++ || position.x > trans.m_position.x)
 	{
 		position.x -= getDeltaTime() * 400;
 	}

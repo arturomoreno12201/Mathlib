@@ -7,7 +7,13 @@ Star::Star()
 
 	vertThrust = 0.0f;
 	horzThrust = 0.0f;
+	stopAction = 0.0f;
+	breakPoint = 4.0f;
 
+	
+	turnSpeed = 10.0f;
+
+	
 	speed = 900.0f;
 	maxSpeed = 1000.0f;
 
@@ -32,36 +38,15 @@ void Star::doStop(float value)
 
 void Star::update(const Transform &trans, Rigidbody & rigidbody)
 {
-	rigidbody.addForce(trans.getUP()* speed * vertThrust);
+	rigidbody.addForce(trans.getUp() * speed * vertThrust);
+	rigidbody.addTorque(turnSpeed * horzThrust);
 
-	trans.getDirection()*speed*vertThrust;
+	rigidbody.addForce(-rigidbody.velocity * breakPoint * stopAction);
+	rigidbody.addTorque(-rigidbody.angularVelocity * breakPoint * stopAction);
 
-	rigidbody.addTorque(horzThrust *speed* vertThrust);
-	vertThrust = 0;
+	horzThrust = vertThrust = stopAction = 0;
 
-	float currentSpeed = magnitude(rigidbody.velocity);
 
-	-normal(-rigidbody.velocity);
-
-	horzThrust = vertThrust = 0;
-
-/*
-	rigidbody.acceleration.x = horzThrust * speed;
-	rigidbody.acceleration.y = vertThrust * speed;
-
-	
-	if (magnitude(rigidbody.velocity) > maxSpeed)
-	{
-		
-		vec2 dir = normal(rigidbody.velocity);
-
-		
-		rigidbody.velocity = dir * maxSpeed;
-	}
-
-	
-	vertThrust = 0.0f;
-	horzThrust = 0.0f;*/
 }
 
 

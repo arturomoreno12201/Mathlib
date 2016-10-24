@@ -36,15 +36,18 @@
     <ClCompile Include="star controler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="planet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlanetREN.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Transform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="fallower.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="vector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Rigidbody.h">
@@ -54,6 +57,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="starControler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="planet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlanetREN.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Camara.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -6,6 +6,7 @@ class Star
 	float vertThrust;	
 	float horzThrust;
 	float stopAction;
+
 	float breakPoint;
 	float turnSpeed;
 	float speed;		

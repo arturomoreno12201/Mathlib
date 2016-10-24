@@ -120,6 +120,8 @@
   <ItemGroup>
     <ClCompile Include="fallower.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="planet.cpp" />
+    <ClCompile Include="PlanetREN.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="star controler.cpp" />
     <ClCompile Include="star.cpp" />
@@ -127,7 +129,10 @@
     <ClCompile Include="vector.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camara.h" />
     <ClInclude Include="fallower.h" />
+    <ClInclude Include="planet.h" />
+    <ClInclude Include="PlanetREN.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="starControler.h" />
     <ClInclude Include="star.h" />

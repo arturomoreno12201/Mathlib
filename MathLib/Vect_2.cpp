@@ -112,9 +112,9 @@ vec2 fromAngle(float a)
 vec2 lerp(const vec2 & start, const vec2 & end, float alpha)
 {
 	vec2 retval;
-	retval.x =(start.x,end.x, alpha);
-	retval.y=(start.y, end.y, alpha);
-	return retval ;
+	retval.x =lerp(start.x,end.x, alpha);
+	retval.y=lerp(start.y, end.y, alpha);
+	return retval;
 }
 
 vec2 quadbraz(const vec2 & start, const vec2 & mid, const vec2 & end, float alpha)
