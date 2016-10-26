@@ -9,6 +9,10 @@
 #include <vector>
 #include "planet.h"
 #include "PlanetREN.h"
+#include "PlayerREN.h"
+#include "ShapeDraw.h"
+
+
 using namespace std;
 using namespace sfw;
 
@@ -73,6 +77,7 @@ void main()
 	Rigidbody playerRigidbody;
 	StarControler playerCtrl;
 	Star playerLoco;
+	Player pREN;
 
 	// Sun
 	Transform sunTransform;
@@ -178,15 +183,23 @@ void main()
 
 		mat3 camera = proj * view;
 
+
 		playerTransform.debugDraw(camera);
 		sunTransform.debugDraw(camera);
 		plan1.debugDraw(camera);
 		moon1.debugDraw(camera);
 		cameraTransform.debugDraw(camera);
 
+		playerRigidbody.debugDraw(camera, playerTransform);
+
+		sunRenderer.draw(camera, sunTransform);
+		plan1renderer.draw(camera, plan1);
+		moon1renderer.draw(camera, moon1);
+
+		pREN.draw(camera, playerTransform);
 
 
-	
+		//drawAABB(AABB{ 0,0,1200,1200 }, 0x888888FF);
 
 	}
 	sfw::termContext();

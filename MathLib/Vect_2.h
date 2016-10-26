@@ -60,6 +60,8 @@ vec2 hermiteSpline(const vec2 &start, const vec2 &s_tan, const vec2 &end, const 
 
 vec2  catRomSpline(const vec2 & start, const vec2 & mid, const vec2 & end, float alpha);
 
+vec2 min(const vec2 &a, const vec2 &b);
+vec2 max(const vec2 &a, const vec2 &b);
 // component-wise
 //+ and -
 

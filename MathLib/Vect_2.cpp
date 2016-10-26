@@ -160,6 +160,16 @@ vec2 catRomSpline(const vec2 & start, const vec2 & mid, const vec2 & end, float 
 	retval.y = catRomSpline(start.y, mid.y, end.y, alpha);
 	return retval;
 }
+vec2 min(const vec2 & a, const vec2 & b)
+{
+	return vec2{ a.x < b.y ? a.x : b.x,
+		a.y < b.y ? a.y : b.y };
+}
+vec2 max(const vec2 & a, const vec2 & b)
+{
+	return vec2{ a.x > b.y ? a.x : b.x,
+		a.y > b.y ? a.y : b.y };
+}
 float vec2::operator[](unsigned idx)const 
 {
 

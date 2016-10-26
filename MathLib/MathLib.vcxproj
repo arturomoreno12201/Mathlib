@@ -110,17 +110,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="colision.h" />
     <ClInclude Include="FLOPS.h" />
     <ClInclude Include="mat2.h" />
     <ClInclude Include="mat3.h" />
+    <ClInclude Include="shapes.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="vec3.h" />
     <ClInclude Include="Vect_2.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="colision.cpp" />
     <ClCompile Include="FLOPS.cpp" />
     <ClCompile Include="mat2.cpp" />
     <ClCompile Include="mat3.cpp" />
+    <ClCompile Include="shapes.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="vec3.cpp" />
     <ClCompile Include="Vect_2.cpp" />

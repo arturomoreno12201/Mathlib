@@ -1,5 +1,7 @@
 #include "Transform.h"
 #include "sfwdraw.h"
+#include "ShapeDraw.h"
+
 
 Transform::Transform(float x, float y,
 	float w, float h, float a)
@@ -88,4 +90,7 @@ void Transform::debugDraw(const mat3 &T) const
 	sfw::drawLine(sgp.x, sgp.y, pos.x, pos.y, BLUE);
 
 	sfw::drawCircle(pos.x, pos.y, 12, 12, 0x888888FF);
+	
+	drawAABB(L * AABB { 0,0,25,25},0x888888FF);
+
 }
