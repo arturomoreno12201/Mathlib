@@ -1,5 +1,6 @@
 #include "shapes.h"
 #include "vec3.h"
+
 Circles operator*(const mat3 & T, const Circles & c)
 {
 	Circles rev;
@@ -83,4 +84,34 @@ AABB operator*(const mat3 & T, const AABB & c)
 	rev.pos = (minv = maxv) / 2;
 	rev.he = (maxv - minv) / 2;
 	return rev;
+}
+
+bool operator==(const AABB & A, const AABB & B)
+{
+	return false;
+}
+
+Plane operator*(const mat3 & T, const Plane & c)
+{
+	Plane rev;
+
+
+
+	retval.pos =
+		(T * vec3{ P.pos.x, P.pos.y, 1 }).xy;
+
+	retval.dir =
+		normal(T * vec3{ P.dir.x, P.dir.
+
+	return Plane();
+}
+
+Ray operator*(const mat3 & T, const Ray & c)
+{
+	return Ray();
+}
+
+Hull operator*(const mat3 & T, const Hull & c)
+{
+	return Hull();
 }

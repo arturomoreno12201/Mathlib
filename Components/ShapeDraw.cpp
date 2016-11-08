@@ -1,4 +1,5 @@
 #include "ShapeDraw.h"
+#include "Transform.h"
 
 void drawCircle(const Circles & c, unsigned color)
 {
@@ -17,3 +18,9 @@ void drawAABB(const AABB & box, unsigned color)
 	sfw::drawLine(C.x, C.y, D.x, D.y, color);
 	sfw::drawLine(D.x, D.y, A.x, A.y, color);
 }
+
+void drawplane(const Plane & P, unsigned color)
+{
+	 drawLine(P.pos.x, P.pos.y,pos.x+p.dir.x*10, pos.y + dir.y*10)
+}
+
